@@ -31,53 +31,26 @@
 #include <getopt.h>
 #include <string.h>
 
-#define VERSION 1.0.1
+#define VERSION 1.0.2
 
 /*
    does not (yet) provide a wrapper for the statx() system call 
 */
 #include <sys/syscall.h>
 
-/* this code works ony with x86, arm/arm64 and x86_64 
- * KF. 20210205
- * I'm not sure about the correctness of this but the following 
- * works , even though its redefining the same id for arm. 
- * I guess that might be expected bacause it's in the headers already
- * but not used in the version of glibc I have since it's not new enough to be included.
- * 
- * I also specifically defined the x86 so it will fail on undefined archs by default
- * instead of using x86 as the catchall fallback else.
- 
- * I don't understand whats going on with the NR_SYSCALL_BASE entry
- * Unless it is just an index for multiple below it, im not sure yet.
- * on 32bit raspbian it appears as this 
- * asm-generic/unistd.h:#define __NR_statx 291
- * but in unistd-common its :#define __NR_statx (__NR_SYSCALL_BASE + 397
-
- * I checked aarch 64 and see it only lists 291
- * /usr/include/aarch64-linux-gnu/bits/syscall.h:#ifdef __NR_statx
- * /usr/include/aarch64-linux-gnu/bits/syscall.h:# define SYS_statx __NR_statx
- * /usr/include/asm-generic/unistd.h:#define __NR_statx 291
- * /usr/include/asm-generic/unistd.h:__SYSCALL(__NR_statx,     sys_statx)
- *
- */
+/*
+   this code works ony with x86, arm, arm64(aarch64) and x86_64 
+*/
 
 #if __x86_64__
   #define __NR_statx 332
-#else
-  #if __arm__
-    #define __NR_statx 397
-    #else
-       #if __aarch64__
-          #define __NR_statx 291
-          #else
-            #if __x86__
-               #define __NR_statx 383
-            #endif
-       #endif
-  #endif
+#elif __x86__
+  #define __NR_statx 383
+#elif __aarch64__
+  #define __NR_statx 291
+#elif __arm__
+  #define __NR_statx 397
 #endif
-
 
 
 #define statx(a,b,c,d,e) syscall(__NR_statx,(a),(b),(c),(d),(e))
