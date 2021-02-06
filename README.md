@@ -3,6 +3,47 @@ Sample imported populates birth/crtime. This would be useful to tag video file c
 
 
 
+```
+root@raspberrypi:~/statx-fun# make
+cc -o statx -Wall statx.o
+root@raspberrypi:~/statx-fun# ls
+LICENCE.TXT  Makefile  me  README.md  statx  statx.c  statx.c.new  statx.c.orig  statx.h  statx.o
+root@raspberrypi:~/statx-fun# ./statx .statx.c
+Filename: .statx.c
+Mask: fff
+statx: No such file or directory
+root@raspberrypi:~/statx-fun# rm statx
+root@raspberrypi:~/statx-fun# ls
+LICENCE.TXT  Makefile  me  README.md  statx.c  statx.c.new  statx.c.orig  statx.h  statx.o
+root@raspberrypi:~/statx-fun# vim statx.c
+root@raspberrypi:~/statx-fun# make
+cc -c -Wall statx.c -o statx.o
+statx.c:55: warning: "__NR_statx" redefined
+     #define __NR_statx 397
+ 
+In file included from /usr/include/arm-linux-gnueabihf/asm/unistd.h:27,
+                 from /usr/include/arm-linux-gnueabihf/sys/syscall.h:24,
+                 from statx.c:39:
+/usr/include/arm-linux-gnueabihf/asm/unistd-common.h:356: note: this is the location of the previous definition
+ #define __NR_statx (__NR_SYSCALL_BASE + 397)
+ 
+cc -o statx -Wall statx.o
+root@raspberrypi:~/statx-fun# ./statx ./statx.c
+Filename: ./statx.c
+Mask: fff
+results=fff
+  Size: 8010            Blocks: 16         IO Block: 4096    regular file
+Device: b3:02           Inode: 136289      Links: 1    
+Access: (0644/-rw-r--r--)  Uid:     0   Gid:     0
+Access: 2021-02-05 17:47:51.513774271-0800
+Modify: 2021-02-05 17:47:51.513774271-0800
+Change: 2021-02-05 17:47:51.513774271-0800
+ Birth: 2021-02-05 17:47:51.513774271-0800
+Attributes: 0000000000000000 (........ ........ ........ ........ ........ ........ ....-... .---.-..)
+
+root@raspberrypi:~/statx-fun#
+```
+
 
 
 # statx
