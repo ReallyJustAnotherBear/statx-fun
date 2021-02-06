@@ -41,11 +41,11 @@ Change: 2021-02-05 17:47:51.513774271-0800
  Birth: 2021-02-05 17:47:51.513774271-0800
 Attributes: 0000000000000000 (........ ........ ........ ........ ........ ........ ....-... .---.-..)
 
-root@raspberrypi:~/statx-fun#
-
+```
 
 Updated:
 #after reviewing the warning above for 32bit arm, I just added asm/unistd.h 
+
 ```
 #elif __arm__
   #include <asm/unistd.h>
