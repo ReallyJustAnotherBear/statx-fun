@@ -44,14 +44,22 @@
  * I guess that might be expected bacause it's in the headers already
  * but not used in the version of glibc I have since it's not new enough to be included.
  * 
+ * I also specifically defined the x86 so it will fail on undefined archs by default
+ * instead of using x86 as the catchall fallback else.
+ 
  * I don't understand whats going on with the NR_SYSCALL_BASE entry
  * Unless it is just an index for multiple below it, im not sure yet.
  * on 32bit raspbian it appears as this 
  * asm-generic/unistd.h:#define __NR_statx 291
  * but in unistd-common its :#define __NR_statx (__NR_SYSCALL_BASE + 397
- * I'm not sure why 291 works on aarch64 yet, but will test next. But 291 does not work
- * when used here on arm. 
-*/
+
+ * I checked aarch 64 and see it only lists 291
+ * /usr/include/aarch64-linux-gnu/bits/syscall.h:#ifdef __NR_statx
+ * /usr/include/aarch64-linux-gnu/bits/syscall.h:# define SYS_statx __NR_statx
+ * /usr/include/asm-generic/unistd.h:#define __NR_statx 291
+ * /usr/include/asm-generic/unistd.h:__SYSCALL(__NR_statx,     sys_statx)
+ *
+ */
 
 #if __x86_64__
   #define __NR_statx 332
