@@ -1,16 +1,10 @@
 This I cloned and added a entry for the arm 32bit syscall to see If I can reuse to get start getting file creation times for files created on ext4, on systems with older glibc. Sample imported populates birth/crtime. This would be useful to tag video file creation times for me in my hls project.
 
 ```
-root@raspberrypi:~/statx-fun# uname -a
 Linux raspberrypi 5.4.83-v7l+ #1379 SMP Mon Dec 14 13:11:54 GMT 2020 armv7l GNU/Linux
-```
-```
 Raspberry Pi reference 2021-01-11
 Generated using pi-gen, https://github.com/RPi-Distro/pi-gen, 21090519d85bdaa1615d5d5057d37b09368ea5d2, stage2
-```
-```
-root@raspberrypi:~/statx-fun# cat /etc/debian_version 
-10.7
+/etc/debian_version  10.7
 ```
 
 I added an entry for __arm__ and then.
@@ -41,29 +35,21 @@ Change: 2021-02-05 17:47:51.513774271-0800
  Birth: 2021-02-05 17:47:51.513774271-0800
 Attributes: 0000000000000000 (........ ........ ........ ........ ........ ........ ....-... .---.-..)
 
-```
+#define __NR_statx (__NR_SYSCALL_BASE + 397)
 
 Updated:
 #after reviewing the warning above for 32bit arm, I just added asm/unistd.h 
 Because its defined in asm/unistd-common.h #define __NR_statx (__NR_SYSCALL_BASE + 397)
-```
+
+
 #elif __arm__
   #include <asm/unistd.h>
-```
+
 Now no more warnings for the arm option and I don't have to override the existing value in rasp{ios,bian}
 Don't know which is most correct, but I'll use any others first before redefining, until re-informed or I learn otherwise.
-
-
-
-
-
-
-
-
-
 ```
 
-
+<hr>
 
 
 
@@ -76,7 +62,7 @@ This project is an example implementation of the statx()-systemcall which was in
 statx-fun was written for x86, arm64 and x86_64 architectures. but it just takes two lines of code(place the right syscall-number) to port it to other architectures. It requires at least Linux Kernel 4.11.
 
 Please note, that at the moment there is no glibc wrapper for statx()-systemcall.
-```
+
 ## Compile
 
 ```
