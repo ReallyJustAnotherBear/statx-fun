@@ -49,7 +49,7 @@
 #elif __aarch64__
   #define __NR_statx 291
 #elif __arm__
-  #define __NR_statx 397
+  #include <asm/unistd.h>
 #endif
 
 
