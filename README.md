@@ -45,14 +45,13 @@ Attributes: 0000000000000000 (........ ........ ........ ........ ........ .....
 
 Updated:
 #after reviewing the warning above for 32bit arm, I just added asm/unistd.h 
-
+Because its defined in asm/unistd-common.h #define __NR_statx (__NR_SYSCALL_BASE + 397)
 ```
 #elif __arm__
   #include <asm/unistd.h>
 ```
-because it can pull it in from unistd-common.h
-Now no more warnings for the arm option and I don't have to override the existing value in raspbian.
-Don't know which is most correct, but I'll use any others first before redefining, until informed or I learn otherwise.
+Now no more warnings for the arm option and I don't have to override the existing value in rasp{ios,bian}
+Don't know which is most correct, but I'll use any others first before redefining, until re-informed or I learn otherwise.
 
 
 
