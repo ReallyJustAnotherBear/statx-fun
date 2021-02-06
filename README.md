@@ -13,7 +13,7 @@ root@raspberrypi:~/statx-fun# cat /etc/debian_version
 10.7
 ```
 
-
+I added an entry for __arm__ and then.
 
 ```
 root@raspberrypi:~/statx-fun# make
