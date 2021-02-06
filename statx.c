@@ -39,6 +39,7 @@
 #include <sys/syscall.h>
 
 /* this code works ony with x86, arm/arm64 and x86_64 
+ * KF. 20210205
  * I'm not sure about the correctness of this but the following 
  * works , even though its redefining the same id for arm. 
  * I guess that might be expected bacause it's in the headers already
