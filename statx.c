@@ -40,7 +40,12 @@
 
 /* this code works ony with x86, arm/arm64 and x86_64 
  * I'm not sure about the correctness of this but the following 
- * works , even though its redefining the same id for arm 
+ * works , even though its redefining the same id for arm. 
+ * I guess that might be expected bacause it's in the headers already
+ * but not used in the version of glibc I have since it's not new enough to be included.
+ * 
+ * I don't understand whats going on with the NR_SYSCALL_BASE entry
+ * Unless it is just an index for multiple below it, im not sure yet.
  * on 32bit raspbian it appears as this 
  * asm-generic/unistd.h:#define __NR_statx 291
  * but in unistd-common its :#define __NR_statx (__NR_SYSCALL_BASE + 397
