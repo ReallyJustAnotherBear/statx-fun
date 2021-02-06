@@ -1,4 +1,4 @@
-This I cloned and added a entry for the arm syscall to see If I can reuse to get start getting file creation times for files created on ext4, on systems with older glibc. Sample imported populates birth/crtime. This would be useful to tag video file creation times for me in my hls project.
+This I cloned and added a entry for the arm 32bit syscall to see If I can reuse to get start getting file creation times for files created on ext4, on systems with older glibc. Sample imported populates birth/crtime. This would be useful to tag video file creation times for me in my hls project.
 
 ```
 root@raspberrypi:~/statx-fun# uname -a
