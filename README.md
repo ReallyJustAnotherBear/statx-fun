@@ -42,6 +42,21 @@ Change: 2021-02-05 17:47:51.513774271-0800
 Attributes: 0000000000000000 (........ ........ ........ ........ ........ ........ ....-... .---.-..)
 
 root@raspberrypi:~/statx-fun#
+
+
+Updated:
+#after reviewing the warning above for 32bit arm, I just added asm/unistd.h because it can pull it in from unistd-common.h
+Now no more warnings for the arm option and I don't have to override the existing value in raspbian.
+Don't know which is most correct, but I'll use any others first before redefining, until informed or I learn otherwise.
+
+
+
+
+
+
+
+
+
 ```
 
 
