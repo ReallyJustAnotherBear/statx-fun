@@ -38,16 +38,33 @@
 */
 #include <sys/syscall.h>
 
-/* this code works ony with x86, arm64 and x86_64 */
+/* this code works ony with x86, arm/arm64 and x86_64 
+ * I'm not sure about the correctness of this but the following 
+ * works , even though its redefining the same id for arm 
+ * on 32bit raspbian it appears as this 
+ * asm-generic/unistd.h:#define __NR_statx 291
+ * but in unistd-common its :#define __NR_statx (__NR_SYSCALL_BASE + 397
+ * I'm not sure why 291 works on aarch64 yet, but will test next. But 291 does not work
+ * when used here on arm. 
+*/
+
 #if __x86_64__
-#define __NR_statx 332
+  #define __NR_statx 332
 #else
-  #if __aarch64__
-    #define __NR_statx 291
-  #else
-    #define __NR_statx 383
+  #if __arm__
+    #define __NR_statx 397
+    #else
+       #if __aarch64__
+          #define __NR_statx 291
+          #else
+            #if __x86__
+               #define __NR_statx 383
+            #endif
+       #endif
   #endif
 #endif
+
+
 
 #define statx(a,b,c,d,e) syscall(__NR_statx,(a),(b),(c),(d),(e))
 
