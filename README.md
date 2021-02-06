@@ -1,3 +1,10 @@
+This I cloned to see If I can reuse to get start getting file creation times for files created on ext4, on systems with older glibc.
+Sample imported populates birth/crtime. This would be useful to tag video file creation times for me in my hls project.
+
+
+
+
+
 # statx
 
 This project is an example implementation of the statx()-systemcall which was introduced in Linux 4.11
