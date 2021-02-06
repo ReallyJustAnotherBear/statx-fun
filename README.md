@@ -17,18 +17,6 @@ root@raspberrypi:~/statx-fun# cat /etc/debian_version
 
 ```
 root@raspberrypi:~/statx-fun# make
-cc -o statx -Wall statx.o
-root@raspberrypi:~/statx-fun# ls
-LICENCE.TXT  Makefile  me  README.md  statx  statx.c  statx.c.new  statx.c.orig  statx.h  statx.o
-root@raspberrypi:~/statx-fun# ./statx .statx.c
-Filename: .statx.c
-Mask: fff
-statx: No such file or directory
-root@raspberrypi:~/statx-fun# rm statx
-root@raspberrypi:~/statx-fun# ls
-LICENCE.TXT  Makefile  me  README.md  statx.c  statx.c.new  statx.c.orig  statx.h  statx.o
-root@raspberrypi:~/statx-fun# vim statx.c
-root@raspberrypi:~/statx-fun# make
 cc -c -Wall statx.c -o statx.o
 statx.c:55: warning: "__NR_statx" redefined
      #define __NR_statx 397
