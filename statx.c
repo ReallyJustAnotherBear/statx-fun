@@ -43,13 +43,13 @@
 */
 
 #if __x86_64__
-  #define __NR_statx 332
+	#define __NR_statx 332
 #elif __x86__
-  #define __NR_statx 383
+	#define __NR_statx 383
 #elif __aarch64__
-  #define __NR_statx 291
+	#define __NR_statx 291
 #elif __arm__
-  #define __NR_statx 397
+	#define __NR_statx 397
 #endif
 
 
