@@ -49,7 +49,7 @@ Now no more warnings for the arm option and I don't have to override the existin
 Don't know which is most correct, but I'll use any others first before redefining, until re-informed or I learn otherwise.
 ```
 
-<hr>
+<hr><hr><hr>
 
 
 
